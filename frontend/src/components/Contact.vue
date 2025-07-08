@@ -1,0 +1,109 @@
+<script setup>
+import SectionTitle from './SectionTitle.vue'
+import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
+</script>
+
+<template>
+  <footer
+    id="kontak"
+    class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 transition-colors duration-500"
+  >
+    <div class="container mx-auto px-6">
+      <SectionTitle title="Kontak" color="text-white" />
+
+      <!-- Grid Konten -->
+      <div
+        class="grid md:grid-cols-3 gap-10 text-center md:text-left mt-12 animate-fade-up"
+        style="animation-delay: 200ms;"
+      >
+        <!-- Info Kontak -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Hubungi Saya</h3>
+          <p class="mb-2 text-gray-300 leading-relaxed">
+            <strong>Alamat:</strong><br />
+            Mojo, RT001/RW008, Mojo, Punung, Pacitan, Jawa Timur 63553
+          </p>
+          <p class="mb-2 flex justify-center md:justify-start items-center gap-2 text-gray-300">
+            <Mail class="w-5 h-5 animate-bounce" />
+            <a
+              href="mailto:izzuddinramadhan84@gmail.com"
+              class="hover:text-blue-400 transition-colors"
+            >
+              izzuddinramadhan84@gmail.com
+            </a>
+          </p>
+          <p class="mb-2 text-gray-300">
+            <strong>WhatsApp:</strong><br />
+            <a
+              href="https://wa.me/6281234567890"
+              target="_blank"
+              class="hover:text-green-400 transition-colors"
+            >
+              +62 812-3456-7890
+            </a>
+          </p>
+        </div>
+
+        <!-- Sosial Media -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Sosial Media</h3>
+          <div class="flex justify-center md:justify-start gap-6">
+            <a
+              href="https://github.com/Izzaramadhan"
+              target="_blank"
+              class="text-gray-300 hover:text-blue-400 transition-transform transform hover:scale-125"
+              aria-label="GitHub"
+            >
+              <Github class="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.instagram.com/izzudnakml/"
+              target="_blank"
+              class="text-gray-300 hover:text-pink-500 transition-transform transform hover:scale-125"
+              aria-label="Instagram"
+            >
+              <Instagram class="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100086737512581&locale=id_ID"
+              target="_blank"
+              class="text-gray-300 hover:text-blue-600 transition-transform transform hover:scale-125"
+              aria-label="Facebook"
+            >
+              <Facebook class="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Tentang Saya -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Tentang Saya</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Mahasiswa Teknik Informatika yang antusias membangun aplikasi web modern serta mendalami desain antarmuka interaktif untuk menghadirkan pengalaman pengguna yang optimal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-xs text-gray-400">
+        &copy; 2025 Izzuddin Akmal. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</template>
+
+<style scoped>
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+</style>
