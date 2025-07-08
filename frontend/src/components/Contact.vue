@@ -21,25 +21,25 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
           <h3 class="text-xl font-semibold mb-4">Hubungi Saya</h3>
           <p class="mb-2 text-gray-300 leading-relaxed">
             <strong>Alamat:</strong><br />
-            Mojo, RT001/RW008, Mojo, Punung, Pacitan, Jawa Timur 63553
+            Jetis,RT01 RW25,Sendangmulya,Minggir,Sleman,Yogyakarta
           </p>
           <p class="mb-2 flex justify-center md:justify-start items-center gap-2 text-gray-300">
             <Mail class="w-5 h-5 animate-bounce" />
             <a
-              href="mailto:izzuddinramadhan84@gmail.com"
+              href="mailto:wijayantodanang867@gmail.com"
               class="hover:text-blue-400 transition-colors"
             >
-              izzuddinramadhan84@gmail.com
+              wijayantodanang867@gmail.com
             </a>
           </p>
           <p class="mb-2 text-gray-300">
             <strong>WhatsApp:</strong><br />
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/628816686587"
               target="_blank"
               class="hover:text-green-400 transition-colors"
             >
-              +62 812-3456-7890
+              +62 881-6686-587
             </a>
           </p>
         </div>
@@ -49,7 +49,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
           <h3 class="text-xl font-semibold mb-4">Sosial Media</h3>
           <div class="flex justify-center md:justify-start gap-6">
             <a
-              href="https://github.com/Izzaramadhan"
+              href="https://github.com/DanangWijayato08"
               target="_blank"
               class="text-gray-300 hover:text-blue-400 transition-transform transform hover:scale-125"
               aria-label="GitHub"
@@ -57,7 +57,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
               <Github class="w-6 h-6" />
             </a>
             <a
-              href="https://www.instagram.com/izzudnakml/"
+              href="https://www.instagram.com/danungg_/"
               target="_blank"
               class="text-gray-300 hover:text-pink-500 transition-transform transform hover:scale-125"
               aria-label="Instagram"
@@ -86,7 +86,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
 
       <!-- Copyright -->
       <div class="mt-12 border-t border-gray-700 pt-6 text-center text-xs text-gray-400">
-        &copy; 2025 Izzuddin Akmal. All rights reserved.
+        &copy; 2025 Danang Wijayanto. All rights reserved.
       </div>
     </div>
   </footer>

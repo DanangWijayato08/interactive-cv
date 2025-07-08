@@ -40,7 +40,7 @@ function scrollToSection(id) {
       <!-- Text -->
       <div class="md:w-1/2 text-center md:text-left animate-slide-in-left">
         <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-3 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-          Halo, Saya Brodin
+          Halo, Saya Danang
         </h1>
 
         <!-- Subtitle -->
