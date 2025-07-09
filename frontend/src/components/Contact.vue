@@ -21,7 +21,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
           <h3 class="text-xl font-semibold mb-4">Hubungi Saya</h3>
           <p class="mb-2 text-gray-300 leading-relaxed">
             <strong>Alamat:</strong><br />
-            Jetis,RT01 RW25,Sendangmulya,Minggir,Sleman,Yogyakarta
+            Jetis,RT01 RW25,Sendangmulyo,Minggir,Sleman,Yogyakarta,55562
           </p>
           <p class="mb-2 flex justify-center md:justify-start items-center gap-2 text-gray-300">
             <Mail class="w-5 h-5 animate-bounce" />
@@ -65,7 +65,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
               <Instagram class="w-6 h-6" />
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=100086737512581&locale=id_ID"
+              href="https://www.facebook.com/danang.wijayanto.1865/"
               target="_blank"
               class="text-gray-300 hover:text-blue-600 transition-transform transform hover:scale-125"
               aria-label="Facebook"
