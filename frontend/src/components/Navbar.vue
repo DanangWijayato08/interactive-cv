@@ -17,18 +17,22 @@
       <div class="md:hidden flex items-center gap-4">
         <button
           @click="toggleDarkMode"
+          aria-label="Toggle Dark Mode"
           class="text-gray-700 dark:text-gray-200 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md"
         >
           <span v-if="isDark">☀</span>
           <span v-else>🌙</span>
         </button>
-        <button @click="toggleMenu" aria-label="Menu">
+        <button @click="toggleMenu" aria-label="Toggle Menu">
           <svg
-            :class="menuOpen ? 'rotate-90 scale-110 transition-transform' : ''"
-            class="w-6 h-6 text-gray-800 dark:text-white"
+            :class="[
+              'w-6 h-6 transition-transform duration-300',
+              menuOpen ? 'rotate-90 scale-110' : ''
+            ]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            class="text-gray-800 dark:text-white"
           >
             <path
               stroke-linecap="round"
@@ -40,7 +44,7 @@
         </button>
       </div>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Navigation -->
       <ul class="hidden md:flex items-center gap-8 font-medium">
         <li v-for="item in navItems" :key="item.id">
           <a
@@ -55,8 +59,11 @@
           </a>
         </li>
         <li>
-          <button @click="toggleDarkMode" aria-label="Mode"
-            class="text-gray-700 dark:text-gray-200 text-lg focus:outline-none">
+          <button
+            @click="toggleDarkMode"
+            aria-label="Toggle Dark Mode"
+            class="text-gray-700 dark:text-gray-200 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md"
+          >
             <span v-if="isDark">☀</span>
             <span v-else>🌙</span>
           </button>
@@ -66,13 +73,16 @@
 
     <!-- Mobile Menu -->
     <transition name="fade">
-      <div v-if="menuOpen" class="md:hidden px-6 pb-4">
+      <div v-if="menuOpen" class="md:hidden px-6 pb-4 pt-2">
         <ul class="flex flex-col space-y-4 text-gray-700 dark:text-gray-200">
           <li v-for="item in navItems" :key="item.id">
             <a
               :href="'#' + item.id"
               @click.prevent="scrollTo(item.id); toggleMenu()"
-              :class="activeSection === item.id ? 'text-blue-500 font-semibold' : ''"
+              :class="[
+                'block transition-all duration-200',
+                activeSection === item.id ? 'text-blue-500 font-semibold' : ''
+              ]"
             >
               {{ item.label }}
             </a>
@@ -90,6 +100,7 @@ const menuOpen = ref(false)
 const isDark = ref(false)
 const scrolled = ref(false)
 const activeSection = ref('')
+
 const navItems = [
   { id: 'profil', label: 'Profil' },
   { id: 'pendidikan', label: 'Pendidikan' },
@@ -102,15 +113,15 @@ function toggleMenu() {
   menuOpen.value = !menuOpen.value
 }
 
-function scrollTo(id) {
-  const section = document.getElementById(id)
-  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
 function toggleDarkMode() {
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+}
+
+function scrollTo(id) {
+  const section = document.getElementById(id)
+  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function handleScroll() {
@@ -129,11 +140,14 @@ function handleScroll() {
 }
 
 onMounted(() => {
+  // Load dark mode state
   const theme = localStorage.getItem('theme')
   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     isDark.value = true
     document.documentElement.classList.add('dark')
   }
+
+  // Scroll tracking
   window.addEventListener('scroll', handleScroll)
   handleScroll()
 })
@@ -161,10 +175,12 @@ onBeforeUnmount(() => {
 .nav-item.active {
   @apply text-blue-600 dark:text-blue-400 font-semibold;
 }
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

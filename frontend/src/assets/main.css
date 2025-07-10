@@ -12,3 +12,15 @@ transition: all 1s ease-out;
 opacity: 1; 
 transform: translateY(0px); 
 }
+/* Tambahkan di App.vue, global CSS, atau <style scoped> komponen */
+
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

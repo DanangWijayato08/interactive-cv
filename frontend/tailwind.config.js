@@ -4,6 +4,8 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
+  // ✅ Aktifkan dark mode menggunakan class
+  darkMode: 'class',
   theme: {
     extend: {
       keyframes: {

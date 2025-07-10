@@ -1,43 +1,54 @@
 <script setup>
-defineProps({
-  title: String,
-  color: { type: String, default: '' },
-  align: { type: String, default: 'center' }, // 'left' | 'center' | 'right'
-});
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    default: 'text-gray-900 dark:text-white',
+  },
+})
 </script>
 
 <template>
-  <div :class="`mb-12 text-${align}`">
+  <div class="text-center animate-fade-in-up opacity-0 animate-delay">
+    <!-- Judul -->
     <h2
-      class="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-white transition-colors duration-300"
-      :class="color"
+      :class="`text-3xl sm:text-4xl font-bold tracking-tight ${props.color}`"
     >
-      {{ title }}
+      {{ props.title }}
     </h2>
+
+    <!-- Garis bawah -->
     <div
-      class="mt-3 h-1 w-24 mx-auto rounded bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-      :class="{
-        'mx-auto': align === 'center',
-        'ml-0': align === 'left',
-        'mr-0': align === 'right'
-      }"
+      class="mt-2 w-16 h-1 mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"
     ></div>
+
+    <!-- Slot deskripsi (opsional) -->
+    <div class="mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+      <slot />
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* Optional: animasi garis bawah saat muncul */
-div > .h-1 {
-  animation: grow-bar 0.6s ease-out forwards;
-}
-@keyframes grow-bar {
+@keyframes fade-in-up {
   from {
-    width: 0;
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    width: 6rem; /* 24 Tailwind = 6rem */
     opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-delay {
+  animation-delay: 0.3s;
 }
 </style>

@@ -21,7 +21,7 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
           <h3 class="text-xl font-semibold mb-4">Hubungi Saya</h3>
           <p class="mb-2 text-gray-300 leading-relaxed">
             <strong>Alamat:</strong><br />
-            Jetis,RT01 RW25,Sendangmulyo,Minggir,Sleman,Yogyakarta,55562
+            Jetis,RT01RW25,Sendangmulyo,Minggir,Sleman,Yogyakarta,55562
           </p>
           <p class="mb-2 flex justify-center md:justify-start items-center gap-2 text-gray-300">
             <Mail class="w-5 h-5 animate-bounce" />

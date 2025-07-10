@@ -28,8 +28,7 @@ onMounted(async () => {
         <!-- Loading -->
         <div v-if="isLoading" class="text-center py-12 text-gray-500 dark:text-gray-400 flex justify-center">
           <svg class="animate-spin w-6 h-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10"
-                    stroke="currentColor" stroke-width="4" />
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
             <path class="opacity-75" fill="currentColor"
                   d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
           </svg>
@@ -51,12 +50,12 @@ onMounted(async () => {
           >
             <!-- Titik timeline -->
             <span
-              class="absolute -left-[29px] top-1 w-6 h-6 rounded-full border-4 border-blue-400 dark:border-blue-500 bg-white dark:bg-gray-900 z-10 shadow"
+              class="timeline-dot absolute -left-[29px] top-1 w-6 h-6 rounded-full border-4 border-blue-400 dark:border-blue-500 bg-white dark:bg-gray-900 z-10 shadow"
             ></span>
 
             <!-- Card -->
             <div
-              class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md transition hover:shadow-lg border border-gray-200 dark:border-gray-700"
+              class="card-hover bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md transition hover:shadow-lg border border-gray-200 dark:border-gray-700"
             >
               <div class="flex flex-wrap items-start gap-4">
                 <!-- Logo -->
@@ -64,19 +63,19 @@ onMounted(async () => {
                   :src="item.image"
                   @error="event => event.target.src = '/default-school.png'"
                   alt="Logo Institusi"
-                  class="w-14 h-14 rounded-full object-contain ring-2 ring-blue-300 dark:ring-blue-500 shrink-0"
+                  class="fade-in-image w-14 h-14 rounded-full object-contain ring-2 ring-blue-300 dark:ring-blue-500 shrink-0"
                 />
 
                 <!-- Info -->
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2">
+                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2 transition-colors">
                     🎓 {{ item.institution }}
                   </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mb-1 break-words">
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mb-1 break-words transition-colors">
                     {{ item.major }}
                   </p>
                   <span
-                    class="inline-block text-xs font-medium px-3 py-1 rounded-full"
+                    class="inline-block text-xs font-medium px-3 py-1 rounded-full transition-colors"
                     :class="item.period.toLowerCase().includes('sekarang')
                       ? 'bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-100'
                       : 'bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100'"
@@ -107,5 +106,38 @@ onMounted(async () => {
 }
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out both;
+}
+
+@keyframes fade-image {
+  to {
+    opacity: 1;
+  }
+}
+.fade-in-image {
+  opacity: 0;
+  animation: fade-image 0.5s ease forwards;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-dot {
+  opacity: 0;
+  animation: pop-in 0.4s ease-out forwards;
+}
+@keyframes pop-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 </style>

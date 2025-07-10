@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import myPhoto from '@/assets/img/pp.jpg'
+import myPhoto from '/fotoku.jpg'
 
 // Dynamic subtitle
 const titles = ['Frontend Developer', 'UI/UX Enthusiast', 'Web Designer', 'Backend Developer']
