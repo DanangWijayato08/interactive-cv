@@ -32,48 +32,39 @@ import { Github, Instagram, Facebook, Mail } from 'lucide-vue-next'
               wijayantodanang867@gmail.com
             </a>
           </p>
-          <p class="mb-2 text-gray-300">
-            <strong>WhatsApp:</strong><br />
-            <a
-              href="https://wa.me/628816686587"
-              target="_blank"
-              class="hover:text-green-400 transition-colors"
-            >
-              +62 881-6686-587
-            </a>
-          </p>
         </div>
 
-        <!-- Sosial Media -->
-        <div>
-          <h3 class="text-xl font-semibold mb-4">Sosial Media</h3>
-          <div class="flex justify-center md:justify-start gap-6">
-            <a
-              href="https://github.com/DanangWijayato08"
-              target="_blank"
-              class="text-gray-300 hover:text-blue-400 transition-transform transform hover:scale-125"
-              aria-label="GitHub"
-            >
-              <Github class="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.instagram.com/danungg_/"
-              target="_blank"
-              class="text-gray-300 hover:text-pink-500 transition-transform transform hover:scale-125"
-              aria-label="Instagram"
-            >
-              <Instagram class="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.facebook.com/danang.wijayanto.1865/"
-              target="_blank"
-              class="text-gray-300 hover:text-blue-600 transition-transform transform hover:scale-125"
-              aria-label="Facebook"
-            >
-              <Facebook class="w-6 h-6" />
-            </a>
-          </div>
-        </div>
+       <!-- Sosial Media -->
+<div class="md:col-start-2 flex flex-col items-center md:items-center">
+  <h3 class="text-xl font-semibold mb-4 text-center">Sosial Media</h3>
+  <div class="flex gap-6 justify-center">
+    <a
+      href="https://github.com/DanangWijayato08"
+      target="_blank"
+      class="text-gray-300 hover:text-blue-400 transition-transform transform hover:scale-125"
+      aria-label="GitHub"
+    >
+      <Github class="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.instagram.com/danungg_/"
+      target="_blank"
+      class="text-gray-300 hover:text-pink-500 transition-transform transform hover:scale-125"
+      aria-label="Instagram"
+    >
+      <Instagram class="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.facebook.com/danang.wijayanto.1865/"
+      target="_blank"
+      class="text-gray-300 hover:text-blue-600 transition-transform transform hover:scale-125"
+      aria-label="Facebook"
+    >
+      <Facebook class="w-6 h-6" />
+    </a>
+  </div>
+</div>
+
 
         <!-- Tentang Saya -->
         <div>
