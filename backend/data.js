@@ -17,7 +17,7 @@ const skills = [
 ];
 
 const projects = [
-  { title: 'Mas Gondrong Rent', image: '/Sewa.png', description: 'Platform website untuk sewa kendaraan area Jogja.', tech: ['Vue.js', 'CI4', 'Mysql', 'Bootstrap'], link: '#' },
+  { title: 'Mas Gondrong Rent', image: '/Sewa.png', description: 'Platform website untuk sewa kendaraan area Jogja.', tech: ['Vue.js', 'Laravel', 'Mysql', 'Bootstrap'], link: 'https://github.com/Izzaramadhan/FP-MasGondrong' },
   { title: 'Portofolio', image: '/Portofolio.png', description: 'Platform website untuk portofolio pribadi.', tech: ['Vue.js', 'Tailwind', 'Express.js', 'Vercel Postgres'], link: '#' },
   { title: 'KostNow', image: '/KostNow.png', description: 'Desain aplikasi mobile untuk membantu mencari kost atau apartemen.', tech: ['Figma'], link: 'https://www.figma.com/design/58WKSPOYyYIQSYwXP5DCj6/IMK-PROJECT?node-id=0-1&t=iZEAmvIgm9a0Denw-1' }
 ];
