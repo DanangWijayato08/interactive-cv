@@ -38,7 +38,10 @@ function scrollToSection(id) {
 
     <div class="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
       <!-- Text -->
-      <div class="md:w-1/2 text-center md:text-left animate-slide-in-left">
+      <div
+        class="md:w-1/2 text-center md:text-left scroll-hidden"
+        v-scroll-animate
+      >
         <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-3 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-transparent bg-clip-text">
           Halo, Saya Danang
         </h1>
@@ -63,7 +66,6 @@ function scrollToSection(id) {
 
         <div class="flex justify-center md:justify-start gap-4 flex-wrap">
           <button
-            aria-label="Scroll ke bagian kontak"
             @click="scrollToSection('kontak')"
             class="bg-blue-600 dark:bg-blue-500 text-white dark:text-gray-100 font-medium py-3 px-6 rounded-xl
                    hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg animate-pulse-glow"
@@ -72,7 +74,6 @@ function scrollToSection(id) {
           </button>
 
           <button
-            aria-label="Scroll ke bagian proyek"
             @click="scrollToSection('proyek')"
             class="border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-300 font-medium py-3 px-6 rounded-xl
                    hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300"
@@ -83,12 +84,15 @@ function scrollToSection(id) {
       </div>
 
       <!-- Foto -->
-      <div class="md:w-1/2 flex justify-center relative animate-slide-in-right">
+      <div
+        class="md:w-1/2 flex justify-center relative scroll-hidden"
+        v-scroll-animate
+      >
         <div class="relative group">
           <img
             loading="lazy"
             :src="myPhoto"
-            alt="Foto Izzuddin Akmal Ramadhan, Mahasiswa Informatika"
+            alt="Foto Danang"
             class="w-72 h-72 sm:w-80 sm:h-80 rounded-full object-cover shadow-xl ring-4 ring-white dark:ring-gray-700
                    transform group-hover:scale-105 transition duration-500 ease-in-out"
           />
@@ -103,37 +107,30 @@ function scrollToSection(id) {
 </template>
 
 <style scoped>
-@keyframes slide-in-left {
-  0% { transform: translateX(-50px); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+/* Scroll Animation */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes slide-in-right {
-  0% { transform: translateX(50px); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
+/* Pulse Button */
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246, 0.6); }
   50% { box-shadow: 0 0 15px 8px rgba(59,130,246, 0.3); }
 }
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out both;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out both;
-}
-
 .animate-pulse-glow {
   animation: pulse-glow 2s infinite;
 }
 
+/* Transition for subtitle */
 .fade-scale-enter-active, .fade-scale-leave-active {
   transition: all 0.5s ease;
 }
-
 .fade-scale-enter-from, .fade-scale-leave-to {
   opacity: 0;
   transform: scale(0.95);

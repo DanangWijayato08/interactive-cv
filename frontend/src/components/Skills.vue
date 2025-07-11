@@ -43,8 +43,9 @@ onMounted(async () => {
       <div
         v-for="(skill, index) in skills"
         :key="index"
-        class="group p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 relative animate-fade-in-up"
-        :style="{ animationDelay: `${index * 0.1}s` }"
+        v-scroll-animate
+        class="group p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 relative scroll-hidden"
+        :style="{ transitionDelay: `${index * 0.1}s` }"
       >
         <!-- Header -->
         <div class="flex items-center gap-4 mb-5">
@@ -83,17 +84,13 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(30px);
 }
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out both;
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
 }
 </style>

@@ -44,7 +44,9 @@ onMounted(async () => {
         <div
           v-for="(project, index) in projects"
           :key="index"
-          class="group bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 duration-300 flex flex-col"
+          v-scroll-animate
+          class="group bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 duration-300 flex flex-col scroll-hidden"
+          :style="{ transitionDelay: `${index * 0.1}s` }"
         >
           <!-- Gambar -->
           <div class="h-56 overflow-hidden">
@@ -92,3 +94,15 @@ onMounted(async () => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+</style>

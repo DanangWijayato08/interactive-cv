@@ -45,8 +45,9 @@ onMounted(async () => {
           <li
             v-for="(item, index) in educationHistory"
             :key="item.id"
-            class="relative group animate-fade-in-up"
-            :style="{ animationDelay: `${index * 0.1}s` }"
+            v-scroll-animate
+            class="relative group scroll-hidden"
+            :style="{ transitionDelay: `${index * 0.1}s` }"
           >
             <!-- Titik timeline -->
             <span
@@ -94,20 +95,18 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animasi scroll */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(30px);
 }
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out both;
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
 }
 
+/* Animasi gambar */
 @keyframes fade-image {
   to {
     opacity: 1;
@@ -118,6 +117,7 @@ onMounted(async () => {
   animation: fade-image 0.5s ease forwards;
 }
 
+/* Hover efek pada card */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -126,6 +126,7 @@ onMounted(async () => {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* Dot animasi */
 .timeline-dot {
   opacity: 0;
   animation: pop-in 0.4s ease-out forwards;
