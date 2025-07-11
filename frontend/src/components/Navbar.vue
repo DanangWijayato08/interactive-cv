@@ -1,6 +1,6 @@
 <template>
   <header
-    :class="[
+    :class="[ 
       'fixed w-full z-50 transition-all duration-300 backdrop-blur-md',
       scrolled ? 'bg-white/90 dark:bg-gray-900/90 shadow-md' : 'bg-transparent'
     ]"
@@ -121,33 +121,40 @@ function toggleDarkMode() {
 
 function scrollTo(id) {
   const section = document.getElementById(id)
-  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
+// ✅ Versi terbaru: gunakan getBoundingClientRect
 function handleScroll() {
   scrolled.value = window.scrollY > 20
+  let found = false
   for (const item of navItems) {
     const sec = document.getElementById(item.id)
     if (sec) {
-      const top = sec.offsetTop - 100
-      const bottom = top + sec.offsetHeight
-      if (window.scrollY >= top && window.scrollY < bottom) {
+      const rect = sec.getBoundingClientRect()
+      const offset = 120 // sesuaikan dengan tinggi navbar
+
+      if (rect.top <= offset && rect.bottom >= offset) {
         activeSection.value = item.id
+        found = true
         break
       }
     }
   }
+
+  // Jika tidak ada yang cocok (misal di luar section), kosongkan
+  if (!found) activeSection.value = ''
 }
 
 onMounted(() => {
-  // Load dark mode state
   const theme = localStorage.getItem('theme')
   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     isDark.value = true
     document.documentElement.classList.add('dark')
   }
 
-  // Scroll tracking
   window.addEventListener('scroll', handleScroll)
   handleScroll()
 })
