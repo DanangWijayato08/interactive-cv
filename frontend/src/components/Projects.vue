@@ -5,13 +5,37 @@ import SectionTitle from './SectionTitle.vue'
 
 const projects = ref([])
 const isLoading = ref(true)
+const visibleItems = ref([]) // Untuk efek animasi scroll
+
+const API_URL = import.meta.env.PROD
+  ? '/api/projects'
+  : 'http://localhost:3000/api/projects'
+
+// Observer untuk scroll-into-view animation
+function observeVisibility(index) {
+  return (el) => {
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleItems.value[index] = true
+            observer.unobserve(el)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+  }
+}
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/projects')
+    const response = await axios.get(API_URL)
     projects.value = response.data
   } catch (error) {
-    console.error('Gagal mengambil data projects:', error)
+    console.error('Gagal mengambil data proyek:', error)
   } finally {
     isLoading.value = false
   }

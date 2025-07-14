@@ -1,21 +1,17 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import SectionTitle from './SectionTitle.vue'
-
-const educationHistory = ref([])
-const isLoading = ref(true)
-
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import SectionTitle from './SectionTitle.vue';
+const educationHistory = ref([]);
+const API_URL = import.meta.env.PROD ? '/api/education' : 'http://localhost:3000/api/education';
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/education')
-    educationHistory.value = response.data
+    const response = await axios.get(API_URL);
+    educationHistory.value = response.data;
   } catch (error) {
-    console.error('Gagal mengambil data pendidikan:', error)
-  } finally {
-    isLoading.value = false
+    console.error('Failed to fetch education data:', error);
   }
-})
+});
 </script>
 
 <template>
