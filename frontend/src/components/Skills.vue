@@ -3,15 +3,11 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import SectionTitle from './SectionTitle.vue'
 
-const projects = ref([])
+const skills = ref([])
 const isLoading = ref(true)
-const visibleItems = ref([]) // Untuk efek animasi scroll
+const visibleItems = ref([]) // Untuk animasi scroll
 
-const API_URL = import.meta.env.PROD
-  ? '/api/projects'
-  : 'http://localhost:3000/api/projects'
-
-// Observer untuk scroll-into-view animation
+// Fungsi observer untuk animasi scroll
 function observeVisibility(index) {
   return (el) => {
     if (!el) return
@@ -20,7 +16,7 @@ function observeVisibility(index) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             visibleItems.value[index] = true
-            observer.unobserve(el)
+            observer.unobserve(el) // animasi hanya sekali
           }
         })
       },
@@ -32,10 +28,10 @@ function observeVisibility(index) {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(API_URL)
-    projects.value = response.data
+    const response = await axios.get('http://localhost:3000/api/skills')
+    skills.value = response.data
   } catch (error) {
-    console.error('Gagal mengambil data proyek:', error)
+    console.error('Gagal mengambil data keahlian:', error)
   } finally {
     isLoading.value = false
   }
@@ -67,8 +63,11 @@ onMounted(async () => {
       <div
         v-for="(skill, index) in skills"
         :key="index"
-        v-scroll-animate
-        class="group p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 relative scroll-hidden"
+        :ref="observeVisibility(index)"
+        :class="[
+          'group p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 relative',
+          visibleItems[index] ? 'scroll-visible' : 'scroll-hidden'
+        ]"
         :style="{ transitionDelay: `${index * 0.1}s` }"
       >
         <!-- Header -->
